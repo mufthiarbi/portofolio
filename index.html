@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Portofolio Website</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: linear-gradient(-45deg, #3b82f6, #1076b5, #36beda, #bd4dd1);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+      color: white;
+      min-height: 100vh;
+    }
+
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Animation for fade-in effect */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Flexbox untuk menyusun teks dan foto di sebelah-sebelahan */
+    #beranda .flex {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    /* Responsif Flexbox */
+    @media (max-width: 1024px) {
+      #beranda .flex {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    /* Foto Section */
+    .photo-container {
+      position: relative;
+      width: 250px;
+      height: 250px;
+      margin: auto;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      transition: clip-path 0.5s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .photo-container:hover {
+      clip-path: polygon(10% 0%, 90% 0%, 100% 90%, 50% 100%, 0% 90%);
+    }
+
+    .photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .photo:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Primary button */
+    .btn-primary {
+      background-color: #be89e6;
+      color: white;
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      border-radius: 8px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #3b82f6;
+      transform: scale(1.05);
+    }
+
+    /* Marquee section */
+    .marquee {
+      overflow: hidden;
+      white-space: nowrap;
+      box-shadow: 0 4px 6px rgba(40, 180, 175, 0.1);
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px 0;
+      margin: 20px 0;
+    }
+
+    .marquee span {
+      display: inline-block;
+      animation: marquee 10s linear infinite;
+    }
+
+    @keyframes marquee {
+      from {
+        transform: translateX(100%);
+      }
+      to {
+        transform: translateX(-100%);
+      }
+    }
+
+    /* Navigation styles */
+    nav {
+      background-color: rgba(138, 222, 237, 0.5);
+      color: white;
+      position: fixed;
+      width: 100%;
+      z-index: 10;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+      padding: 15px 30px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #3b82f6;
+    }
+
+    /* Scroll spy active link */
+    .active {
+      color: #3b82f6;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#beranda" class="nav-link">Beranda</a></li>
+      <li><a href="#tentang_saya" class="nav-link">Tentang Saya</a></li>
+      <li><a href="#portofolio" class="nav-link">Portofolio</a></li>
+      <li><a href="#kontak" class="nav-link">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <!-- Marquee Section -->
+  <div class="marquee">
+    <span class="text-xl text-white">
+      Selamat datang di portofolio saya! 🚀 Temukan lebih banyak tentang perjalanan saya sebagai Desainer UI/UX! 
+    </span>
+  </div>
+
+  <!-- Home Section -->
+  <section id="beranda" class="h-screen flex items-center justify-center px-4 fade-in">
+    <div class="flex flex-col lg:flex-row items-center justify-center gap-8 w-full">
+      <!-- Teks Bagian -->
+      <div class="text-section text-center lg:text-left">
+        <h1 class="text-5xl font-bold mb-4">Halo, Saya</h1>
+        <h2 id="dynamic-text" class="text-4xl font-bold text-blue-300 mb-6"></h2>
+        <p class="text-lg max-w-2xl mx-auto mb-8">
+          Saya mahasiswa <strong>Teknik Informatika</strong>, memulai perjalanan sebagai desainer UI/UX. Saya sangat tertarik di bidang desain grafis dan terus belajar untuk menjadi seorang profesional.
+        </p>
+        <a href="#kontak" class="btn-primary">Hubungi Saya</a>
+      </div>
+      <!-- Foto Bagian -->
+      <div class="photo-container">
+        <img src="assets/img/profil.jpeg" alt="Foto Profil" class="photo" />
+      </div>
+    </div>
+  </section>
+
+<!-- Tentang Saya Section -->
+<section id="tentang_saya" class="py-16 bg-gradient-to-r from-purple-400 via-blue-500 to-indigo-600 fade-in">
+  <div class="container mx-auto text-center">
+    <h2 class="text-4xl font-extrabold text-white mb-12 animate__animated animate__fadeInUp">Tentang Saya</h2>
+
+    <div class="flex justify-center gap-16 flex-wrap">
+      <!-- Perkenalkan Card -->
+      <div class="bg-gradient-to-r from-blue-600 to-white-700 text-white p-8 rounded-3xl shadow-xl max-w-md transition transform hover:scale-105 hover:shadow-2xl hover:bg-gradient-to-l hover:from-indigo-500 hover:to-pink-500 duration-300">
+        <h3 class="text-2xl font-semibold mb-4">Perkenalkan</h3>
+        <p class="text-lg leading-relaxed mb-6">
+          Saya mahasiswa Teknik Informatika semester 5 di Universitas Sains Al-Qur'an. Saya sangat tertarik dalam dunia desain, khususnya UI/UX Design dan Fotografi.
+        </p>
+      </div>
+
+      <!-- Informasi Pribadi Card -->
+      <div class="bg-gradient-to-r from-teal-500 to-blue-600 text-white p-8 rounded-3xl shadow-xl max-w-md transition transform hover:scale-105 hover:shadow-2xl hover:bg-gradient-to-l hover:from-pink-500 hover:to-indigo-500 duration-300">
+        <h3 class="text-2xl font-semibold mb-4">Informasi Pribadi</h3>
+        <ul class="text-lg space-y-3">
+          <li><strong>Tanggal Lahir:</strong> 04 Januari 2004</li>
+          <li><strong>Email:</strong> mufthiarbi17@gmail.com</li>
+          <li><strong>Kota:</strong> Metro, Lampung</li>
+          <li><strong>Status:</strong> Mahasiswa</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Script untuk animasi dan scroll spy -->
+<script>
+  // Dynamic text typing animation
+  const textElement = document.getElementById("dynamic-text");
+  const texts = ["Mufthi Amartia Arbi", "Desainer UI/UX"];
+  let textIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function type() {
+    const currentText = texts[textIndex];
+    textElement.innerHTML = currentText.slice(0, charIndex) + (isDeleting ? "|" : "");
+    if (!isDeleting && charIndex < currentText.length) {
+      charIndex++;
+      setTimeout(type, 100);
+    } else if (isDeleting && charIndex > 0) {
+      charIndex--;
+      setTimeout(type, 50);
+    } else {
+      if (!isDeleting) setTimeout(() => (isDeleting = true), 1000);
+      else {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % texts.length;
+      }
+      setTimeout(type, 100);
+    }
+  }
+  type();
+
+  // Scroll Spy for Navigation
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  function updateActiveLink() {
+    const sections = document.querySelectorAll('section');
+    let activeSection = null;
+
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+        activeSection = section;
+      }
+    });
+
+    navLinks.forEach((link) => {
+      const href = link.getAttribute('href').substring(1);
+      if (activeSection && href === activeSection.id) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveLink);
+</script>
+
+
+
+  
+<!-- Portofolio Section -->
+<section class="py-16 bg-gradient-to-r from-purple-600 to-indigo-600" id="portofolio">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-extrabold mb-12 text-center text-white">Portofolio</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8" id="portfolio-container">
+      <!-- Project 1 -->
+      <div class="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 hover:translate-y-2">
+        <img alt="Project 2" class="mb-4 rounded-lg transition-transform duration-300 transform hover:scale-110 hover:rotate-3" src="assets/img/logo kopi.png" />
+        <h3 class="text-2xl font-bold mb-2 text-gray-900">Sistem Informasi Kafe</h3>
+        <p class="mb-4 text-gray-700">
+          Dirancang untuk memberikan pengalaman pesanan yang nyaman, aplikasi ini memungkinkan pengguna untuk memesan berbagai jenis kopi, makanan ringan, dan minuman lainnya langsung dari ponsel mereka, baik untuk dinikmati di kafe atau dibawa pulang.
+        </p>
+        <div class="flex space-x-2 mb-4">
+          <div class="bg-violet-200 text-violet-500 px-4 py-2 rounded-full text-sm font-medium transition-transform duration-300 transform hover:scale-105">
+            Figma
+          </div>
+        </div>
+        <a class="text-blue-500 hover:text-blue-700 transition duration-200 ease-in-out transform hover:scale-105" href="https://www.figma.com/design/LjYuynlNyOIGJO6VxuQrLz/Aplikasi-Kafe-Nishigikoi?node-id=0-1&t=YaDOFKM0m9MXAqnd-1" target="_blank" rel="noopener">
+          Lihat Prototipe
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+  <section class="py-16 bg-slate" id="kontak">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-8 text-center">Kontak Saya</h2>
+        
+        <!-- Pesan Kesalahan -->
+        <div id="error-message" class="text-red-500 text-center mb-4"></div>
+
+        <form class="max-w-lg mx-auto mb-8" action="kirim-pesan.php" method="POST">
+            <div class="mb-4">
+                <label class="block text-lg font-bold mb-2" for="nama">Nama</label>
+                <input class="w-full p-2 border border-gray-300 rounded-lg" id="nama" name="nama" type="text" required />
+            </div>
+            <div class="mb-4">
+                <label class="block text-lg font-bold mb-2" for="email">Email</label>
+                <input class="w-full p-2 border border-gray-300 rounded-lg" id="email" name="email" type="email" required />
+            </div>
+            <div class="mb-4">
+                <label class="block text-lg font-bold mb-2" for="pesan">Pesan</label>
+                <textarea class="w-full p-2 border border-gray-300 rounded-lg" id="pesan" name="pesan" rows="4" required></textarea>
+            </div>
+            <button class="w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600" type="submit">
+                Kirim Pesan
+            </button>
+        </form>
+
+        <div class="text-center">
+          <p class="text-lg mb-4">Atau hubungi saya langsung di:</p>
+          <p class="text-lg mb-4">
+              Email: <a href="mailto:mufthiarbi17@gmail.com" class="text-blue-500 hover:text-blue-700">mufthiarbi17@gmail.com</a>
+          </p>
+      </div>
+    </div>
+</section>
+
+<script>
+    document.querySelector("form").addEventListener("submit", function (event) {
+        const nama = document.getElementById("nama").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const pesan = document.getElementById("pesan").value.trim();
+
+        if (!nama || !email || !pesan) {
+            event.preventDefault();
+            const errorMessage = document.getElementById("error-message");
+            errorMessage.textContent = "Semua field harus diisi!";
+        }
+    });
+</script>
+
+<script>
+    document.querySelector('.hamburger-menu').addEventListener('click', function() {
+        document.querySelector('.mobile-menu').classList.toggle('active');
+    });
+</script>
+
+  <head>
+  
+    <title>Footer Design</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+      footer {
+        text-align: center;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        padding: 20px;
+        background-color: #0f172a;
+        color: #94a3b8;
+      }
+  
+      .footer-links {
+        margin-bottom: 15px;
+      }
+  
+      .footer-links a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #94a3b8;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+  
+      .footer-links a:hover {
+        color: #60a5fa;
+        text-decoration: underline;
+      }
+  
+      .social-icons {
+        margin-bottom: 15px;
+      }
+  
+      .social-icons a {
+        margin: 0 10px;
+        font-size: 24px;
+        color: #475569;
+        text-decoration: none;
+      }
+  
+      .social-icons a:hover {
+        color: #60a5fa;
+      }
+  
+      .footer-copyright {
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <footer>
+      <div class="footer-links">
+        <a href="#beranda">Beranda</a>
+        <a href="#tentang_saya">Tentang Saya</a>
+        <a href="#portofolio">Portofolio</a>
+        <a href="#kontak">Kontak</a>
+      </div>
+      <div class="social-icons">
+        <a class="text-2xl text-blue-500 hover:text-blue-500" href="https://github.com/mufthiarbi" aria-label="Kunjungi github" target="_blank" rel="noopener">
+          <i class="fab fa-github">
+          </i>
+         </a>
+         <a class="text-2xl text-blue-500 hover:text-blue-500" href="https://t.me/mufthiarbi" aria-label="Kunjungi telegram" target="_blank" rel="noopener">
+          <i class="fab fa-telegram">
+          </i>
+         </a>
+         <a class="text-2xl text-green-500 hover:text-green-600" href="https://api.whatsapp.com/send/?phone=%2B6281632706492&text=Halo,%20saya%20ingin%20bertanya%20tentang%20produk%20Anda&type=phone_number&app_absent=0" aria-label="Kunjungi whatsapp" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-whatsapp"></i>
+      </a>
+      
+         <a class="text-2xl text-blue-500 hover:text-blue-500" href="https://www.instagram.com/mufffff___/" aria-label="Kunjungi Instagram" target="_blank" rel="noopener">
+          <i class="fab fa-instagram">
+          </i>
+         </a>
+      </div>
+      <div class="footer-copyright">
+        &copy; 2025 Mufthi Arbi, Semua hak dilindungi undang-undang.
+      </div>
+    </footer>
+ </body>
+</html>
